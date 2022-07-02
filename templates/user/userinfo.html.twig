@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Registro de usuarios
+{% endblock %}
+
+{% block body %}
+	<div class="example-wrapper">
+		<h2>User Information: </h2>
+	 
+			 
+				<div class="form-group">
+					<label for="register_name" class="required"><strong> Prenom:</strong> {{user.name}}</label> 
+					<label for="register_surname" class="required"><strong> Nom:</strong> {{user.surname}}</label> 
+					<label for="register_email" class="required"><strong> Mail:</strong> {{user.email}}</label> 
+                </div>
+ 				 
+ 	</div>
+{% endblock %}

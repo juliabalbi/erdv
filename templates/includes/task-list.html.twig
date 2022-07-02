@@ -1,0 +1,40 @@
+{% if tasks|length >= 1 %}
+<div class="table-responsive">
+    <table class="table">
+    <tr>
+        <th>Patient</th>
+        <th>Priorité</th>
+        <th>Date et Heure</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for task in tasks %}
+        <tr class="bg-blue">
+            <td>{{ task.patient }}</td>
+            <td>
+                {% if task.priority == 'high' %}
+                    {{ 'Haut' }}
+                {% endif %}
+                {% if task.priority == 'medium' %}
+                    {{ 'Medium' }}
+                {% endif %}
+                {% if task.priority == 'low' %}
+                    {{ 'Bas' }}
+                {% endif %}
+            </td>
+            <td>{{ task.hours }}</td>
+            <td class="buttons d-flex flex-column">
+                <a href="{{ path('task_detail', {'id':task.id}) }}" class="btn-show mt-4">Voir</a>
+                {% if app.user != null and task.user.id == app.user.id %}
+                    <a href="{{ path('task_edit', {'id':task.id}) }}" class="btn-edit mt-4">Modifier</a>
+                    <a href="{{ path('task_delete', {'id':task.id}) }}" class="btn-delete mt-4">Effacer</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+
+</table>
+</div>
+{% else %}
+    <strong>Pas de rendez-vous pour le moment</strong>
+{% endif %}

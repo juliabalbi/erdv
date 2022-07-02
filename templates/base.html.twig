@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Bienvenue
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			<link href="{{ asset('assets/css/style.css') }}" type="text/css" rel="stylesheet"/>
+		{% endblock %}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	</head>
+	<body>
+		{% block header %}
+			<div id="header" class=" wrapper-1">
+				<img src="{{ asset('assets/logo.png') }}"/>
+				<h1>E-RDV</h1>
+				<ul id="menu">
+					{% if app.user %}
+                        <li>
+								<a href="{{ path('task_creation') }}">Créer un Rendez-Vous</a>
+
+							</li>
+
+						
+						<li>
+							<a href="{{ path('my_tasks') }}">Mes Rendez vous</a>
+						</li>
+
+						{% if app.user.usertype==1 %}
+
+						<li>
+							<a href="{{ path('tasks') }}">Tout les Rendez-vous</a>
+						</li>
+
+							
+
+							<li>
+								<a href="{{ path('user_list')}}">CMS1</a>
+							</li>
+
+
+							<li>
+								<a href="{{ path('app_visitor_index')}}">Visiteurs</a>
+							</li>
+						{% endif %}
+
+
+						<li class="">
+							<a href="{{ path('userinfo',{id:app.user.id}) }}">{{ app.user.name  }}</a>
+						</li>
+						<li>
+							<a href="{{ path('logout') }}">Sortir</a>
+						</li>
+
+					{% else %}
+						<li>
+							<a href="{{ path('login') }}">Se connecter</a>
+						</li>
+						<li>
+							<a href="{{ path('register') }}">S'inscrire</a>
+						</li>
+					{% endif %}
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+		{% endblock %}
+		{% block body %}{% endblock %}
+		{% block javascripts %}{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Touts les rendez vous{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h2>{{task.patient}} ✅</h2>
+    <p class="data-task">
+        {{task.user.name }} {{task.user.surname }}  |
+       
+        {% if task.priority == 'high' %}
+              {{ 'Haut' }}
+        {% endif %}
+        {% if task.priority == 'medium' %}
+            {{ 'Moyen' }}
+        {% endif %}
+        {% if task.priority == 'low' %}
+            {{ 'Bas' }}
+        {% endif %} 
+         | {{task.hours}}
+    </p>
+    <p>
+        {{task.doctor}}
+    </p>
+ 
+</div>
+{% endblock %}

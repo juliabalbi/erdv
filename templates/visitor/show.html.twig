@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}visiteurs{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Visiteurs</h1>
+    <div class="table-responsive">
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ visitor.id }}</td>
+            </tr>
+            <tr>
+                {# <th>Ip address</th>
+                <td>{{ visitor.ipAddress }}</td> #}
+            </tr>
+            <tr>
+                <th>Timestamp</th>
+                <td>{{ visitor.timestamp }}</td>
+            </tr>
+            <tr>
+                <th>Page</th>
+                <td>{{ visitor.page }}</td>
+            </tr>
+            <tr>
+                <th>Is logged in</th>
+                <td>{{ visitor.isLoggedIn ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ visitor.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="button-back" href="{{ path('app_visitor_index') }}">back to list</a>
+
+    <form method="post" action="{{ path('app_visitor_delete', {'id': visitor.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ visitor.id) }}">
+        <button class="btn">Effacer</button>
+    </form>
+</div>
+</div>
+{% endblock %}

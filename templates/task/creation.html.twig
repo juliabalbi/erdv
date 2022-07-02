@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if edit is defined %}
+       Modifier un Rendez-Vous
+    {%else%}
+        Créer un rendez vous
+    {%endif%}
+
+{% endblock %}
+
+
+ {% block stylesheets %}
+
+<link rel="stylesheet" type="text/css" href="{{asset('assets/css/jquery.datetimepicker.css')}} ">
+
+ {{ parent() }}
+
+{% endblock %} 
+
+
+{% block body %}
+
+    <div class="example-wrapper">
+        <h2>
+            {% if edit is defined %}
+               Modifier un Rendez-Vous
+            {%else%}
+                Créer un rendez vous
+            {%endif%}
+        </h2>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+
+
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery.datetimepicker.full.min.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#task_hours').datetimepicker();
+    });
+</script>
+
+
+{% endblock %}
+
+
